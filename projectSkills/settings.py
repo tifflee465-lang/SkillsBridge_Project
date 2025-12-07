@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'coreApp'
+    'coreApp',
+    'userApp'
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'projectSkills.wsgi.application'
+
+
+AUTH_USER_MODEL = "userApp.User"
+LOGIN_REDIRECT_URL = "profile"
+LOGOUT_REDIRECT_URL = "login"
+LOGIN_URL = "login"
 
 
 # Database

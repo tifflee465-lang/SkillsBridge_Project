@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+  .profile-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .profile-container h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #333;
+  }
+
+  .profile-item {
+    background: #f8faff;
+    padding: 18px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #F2994A;
+  }
+
+  .profile-item strong {
+    font-size: 16px;
+    color: #333333;
+  }
+
+  .profile-item p {
+    margin: 5px 0 0;
+    font-size: 15px;
+    color: #444;
+  }
+
+  .logout-btn {
+    width: 100%;
+    display: inline-block;
+    padding: 12px;
+    background: #0E7C7B;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-top: 25px;
+  }
+
+  .logout-btn:hover {
+    background: #0E7C7B;
+  }
+</style>
+
+<div class="profile-container">
+    <h1>Your Profile</h1>
+
+    <div class="profile-item">
+      <strong>Username:</strong>
+      <p>{{ request.user.username }}</p>
+    </div>
+
+    <div class="profile-item">
+      <strong>Email:</strong>
+      <p>{{ request.user.email }}</p>
+    </div>
+
+    <div class="profile-item">
+      <strong>Bio:</strong>
+      <p>{{ request.user.bio }}</p>
+    </div>
+
+    <div class="profile-item">
+      <strong>Location:</strong>
+      <p>{{ request.user.location }}</p>
+    </div>
+
+    <div class="profile-item">
+      <strong>Skills Count:</strong>
+      <p>{{ request.user.skills_count }}</p>
+    </div>
+
+    <a class="logout-btn" href="{% url 'logout' %}">Logout</a>
+</div>
+
+{% endblock %}
