@@ -1,0 +1,41 @@
+<!-- Password Reset Page: password_reset.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-md mx-auto mt-16 p-8 bg-white rounded-2xl shadow-lg">
+  <h1 class="text-3xl font-bold mb-6 text-center">Reset Password</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    <div class="mb-4">
+      <label class="block font-medium mb-2">Email Address</label>
+      <input type="email" name="email" class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+    </div>
+
+    <button type="submit" class="w-full py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700">Send Reset Link</button>
+  </form>
+</div>
+{% endblock %}
+
+<!-- Edit Profile Page: edit_profile.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-lg mx-auto mt-16 p-8 bg-white rounded-2xl shadow-lg">
+  <h1 class="text-3xl font-bold mb-6 text-center">Edit Profile</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <div class="mb-4">
+      <label class="block font-medium mb-2">Bio</label>
+      <textarea name="bio" class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">{{ request.user.bio }}</textarea>
+    </div>
+
+    <div class="mb-4">
+      <label class="block font-medium mb-2">Location</label>
+      <input type="text" name="location" class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{ request.user.location }}">
+    </div>
+
+    <button type="submit" class="w-full py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700">Save Changes</button>
+  </form>
+</div>
+{% endblock %}

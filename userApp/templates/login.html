@@ -1,11 +1,108 @@
-<h1>Login</h1>
+{% extends "base.html" %}
 
-<form method="POST">
-  {% csrf_token %}
-  <p>Username: <input type="text" name="username"></p>
-  <p>Password: <input type="password" name="password"></p>
+{% block content %}
+<style>
+    .auth-container {
+        max-width: 450px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        text-align: center;
+        animation: fadeIn 0.3s ease-in-out;
+    }
 
-  <button type="submit">Login</button>
-</form>
+    h1 {
+        font-size: 28px;
+        font-weight: bold;
+        color: #0E7C7B;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+    }
 
-<a href="{% url 'signup' %}">Create Account</a>
+    .auth-container p {
+        text-align: left;
+        margin-bottom: 15px;
+        font-size: 15px;
+        color: #444;
+        font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 15px;
+        border: 1px solid #b9c7d7;
+        border-radius: 8px;
+        margin-top: 6px;
+        outline: none;
+        transition: 0.2s;
+        background-color: #f9fbff;
+    }
+
+    input:focus {
+        border-color: #2a8bf2;
+        box-shadow: 0 0 4px rgba(42,139,242,0.4);
+    }
+
+    button {
+        margin-top: 15px;
+        background: #0E7C7B;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 8px;
+        width: 100%;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #0E7C7B;
+    }
+
+    .link {
+        display: block;
+        margin-top: 20px;
+        color: #0E7C7B;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .link:hover {
+        text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<div class="auth-container">
+
+    <h1>Login</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <p>Username:  
+            <input type="text" name="username">
+        </p>
+
+        <p>Password:
+            <input type="password" name="password">
+        </p>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <a class="link" href="{% url 'signup' %}">Create Account</a>
+
+</div>
+{% endblock %}
